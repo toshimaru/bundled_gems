@@ -3,3 +3,5 @@
 
 require "bundled_gems"
 require 'cli'
+
+Cli.start(ARGV)
