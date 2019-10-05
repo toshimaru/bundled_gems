@@ -3,8 +3,8 @@
 require 'thor'
 
 class Cli < Thor
-  desc "hello NAME", "say hello to NAME"
-  def hello(name)
-    puts "Hello #{name}"
+  desc "list", "bundle list(without bundle install)"
+  def list
+    puts "bundle list"
   end
 end
