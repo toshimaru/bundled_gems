@@ -5,6 +5,8 @@ require 'thor'
 class Cli < Thor
   desc "list", "bundle list(without bundle install)"
   def list
-    puts "bundle list"
+    gemfilelock_content = File.read("./Gemfile.lock")
+    lockfile = Bundler::LockfileParser.new(gemfilelock_content)
+    lockfile.specs.each { |s| puts "#{s.name}, #{s.version}" }
   end
 end
