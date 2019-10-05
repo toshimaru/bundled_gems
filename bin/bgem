@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+load File.expand_path("../../exe/bgem", __FILE__)
