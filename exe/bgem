@@ -2,6 +2,6 @@
 # frozen_string_literal: true
 
 require "bundled_gems"
-require 'cli'
+require 'bundled_gem/cli'
 
-Cli.start(ARGV)
+BundledGem::Cli.start(ARGV)

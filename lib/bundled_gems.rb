@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "bundled_gem/version"
 
 module BundledGem
