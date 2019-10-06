@@ -13,3 +13,4 @@ jobs:
       run: |
         bundle install --jobs 4 --retry 3
         ./bin/bgem list --lockfile test/fixture/Gemfile.sample.lock
+        ./bin/bgem install rubocop --lockfile test/fixture/Gemfile.sample.lock
