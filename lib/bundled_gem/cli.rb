@@ -4,11 +4,23 @@ require 'thor'
 
 module BundledGem
   class Cli < Thor
-    desc "list", "bundle list(without bundle install)"
+    desc "install [BUNDLED_GEM]", "install [BUNDLED_GEM] from `Gemfile.lock`"
+    def install(bundled_gem)
+      reader = LockfileReader.new
+      if reader.gem_listed?(bundled_gem)
+        version = reader.get_version(bundled_gem)
+        system "gem install #{bundled_gem} --version #{version}"
+      else
+        abort "`#{bundled_gem}` is not listed in Gemfile.lock." 
+      end
+    end
+
+    desc "list", "bundle list without `bundle install`"
     def list
-      gemfilelock_content = File.read("./Gemfile.lock")
-      lockfile = ::Bundler::LockfileParser.new(gemfilelock_content)
-      lockfile.specs.each { |s| puts "#{s.name}, #{s.version}" }
+      puts "Gems included in `Gemfile.lock`:"
+      LockfileReader.new.lockfile_specs.each do |s| 
+        puts "  * #{s.name}, #{s.version}" 
+      end
     end
   end
 end

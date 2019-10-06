@@ -5,7 +5,7 @@ jobs:
     strategy:
       matrix:
         ruby: [2.4.x, 2.5.x, 2.6.x]
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v1
@@ -18,4 +18,6 @@ jobs:
         gem install bundler --force --no-document
         bundle install --jobs 4 --retry 3
         bundle exec rake
-        ./bin/bgem
+    - run: ./bin/bgem
+    - run: ./bin/bgem list
+    - run: ./bin/bgem install rake

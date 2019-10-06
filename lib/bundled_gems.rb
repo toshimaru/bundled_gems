@@ -4,6 +4,32 @@ require 'bundler'
 require "bundled_gem/version"
 
 module BundledGem
-  class Error < StandardError; end
-  # Your code goes here...
+  class LockfileReader
+    LOCKFILE = "Gemfile.lock"
+
+    def initialize(lockfile: LOCKFILE)
+      @lockfile_content = File.read(lockfile)
+    end
+
+    # Parse `Gemfile.lock` and Retrieve specs
+    def lockfile_specs
+      lockfile.specs
+    end
+
+    # Get version info from `Gemfile.lock`
+    def get_version(gem)
+      lockfile_specs.find{ |s| s.name == "rake"}.version
+    end
+
+    # Check gem is listed in `Gemfile.lock`
+    def gem_listed?(gem)
+      lockfile_specs.map(&:name).include? gem
+    end
+
+    private
+
+    def lockfile
+      @lockfile ||= ::Bundler::LockfileParser.new(@lockfile_content)
+    end
+  end
 end
