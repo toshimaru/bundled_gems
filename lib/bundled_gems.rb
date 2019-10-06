@@ -18,7 +18,7 @@ module BundledGem
 
     # Get version info from `Gemfile.lock`
     def get_version(gem)
-      lockfile_specs.find{ |s| s.name == gem }.version
+      lockfile_specs.find{ |s| s.name == gem }&.version
     end
 
     # Check gem is listed in `Gemfile.lock`
