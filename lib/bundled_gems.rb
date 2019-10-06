@@ -4,10 +4,11 @@ require 'bundler'
 require "bundled_gem/version"
 
 module BundledGem
-  class LockfileReader
-    LOCKFILE = "Gemfile.lock"
+  LOCKFILE = "Gemfile.lock"
 
+  class LockfileReader
     def initialize(lockfile: LOCKFILE)
+      abort "No such file: #{lockfile}" unless File.exist?(lockfile)
       @lockfile_content = File.read(lockfile)
     end
 
