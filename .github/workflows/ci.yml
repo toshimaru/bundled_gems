@@ -1,0 +1,21 @@
+name: Ruby Test
+on: [push]
+jobs:
+  build:
+    strategy:
+      matrix:
+        ruby: [2.4.x, 2.5.x, 2.6.x]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Ruby ${{ matrix.ruby }}
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - name: Build and test with Rake
+      run: |
+        gem install bundler --force --no-document
+        bundle install --jobs 4 --retry 3
+        bundle exec rake
+        ./bin/bgem
