@@ -7,7 +7,12 @@ module BundledGem
     desc "install [BUNDLED_GEM]", "install [BUNDLED_GEM] from `Gemfile.lock`"
     def install(bundled_gem)
       reader = LockfileReader.new
-      puts "`#{bundled_gem}` is not listed in Gemfile.lock." unless reader.gem_listed?(bundled_gem)
+      if reader.gem_listed?(bundled_gem)
+        version = reader.get_version(bundled_gem)
+        system "gem install #{bundled_gem} --version #{version}"
+      else
+        abort "`#{bundled_gem}` is not listed in Gemfile.lock." 
+      end
     end
 
     desc "list", "bundle list without `bundle install`"

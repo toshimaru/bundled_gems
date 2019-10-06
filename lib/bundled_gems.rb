@@ -16,6 +16,11 @@ module BundledGem
       lockfile.specs
     end
 
+    # Get version info from `Gemfile.lock`
+    def get_version(gem)
+      lockfile_specs.find{ |s| s.name == "rake"}.version
+    end
+
     # Check gem is listed in `Gemfile.lock`
     def gem_listed?(gem)
       lockfile_specs.map(&:name).include? gem
