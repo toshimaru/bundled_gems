@@ -18,7 +18,7 @@ module BundledGem
 
     # Check gem is listed in `Gemfile.lock`
     def gem_listed?(gem)
-      lockfile_specs.map(:name).include? gem
+      lockfile_specs.map(&:name).include? gem
     end
 
     private

@@ -6,7 +6,8 @@ module BundledGem
   class Cli < Thor
     desc "install [BUNDLED_GEM]", "install [BUNDLED_GEM] from `Gemfile.lock`"
     def install(bundled_gem)
-      # TODO
+      reader = LockfileReader.new
+      puts "`#{bundled_gem}` is not listed in Gemfile.lock." unless reader.gem_listed?(bundled_gem)
     end
 
     desc "list", "bundle list without `bundle install`"
