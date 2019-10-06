@@ -8,6 +8,7 @@ module BundledGem
     LOCKFILE = "Gemfile.lock"
 
     def initialize(lockfile: LOCKFILE)
+      abort "No such file: #{lockfile}" unless File.exist?(lockfile)
       @lockfile_content = File.read(lockfile)
     end
 
