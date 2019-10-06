@@ -5,6 +5,7 @@ require 'thor'
 module BundledGem
   class Cli < Thor
     desc "install [BUNDLED_GEM]", "install [BUNDLED_GEM] from `Gemfile.lock`"
+    option "lockfile", type: :string, desc: "Use the specified gemfile.lock instead of Gemfile.lock"
     def install(bundled_gem)
       reader = LockfileReader.new
       if reader.gem_listed?(bundled_gem)
