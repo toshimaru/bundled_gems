@@ -22,5 +22,10 @@ module BundledGem
         puts "  * #{s.name}, #{s.version}" 
       end
     end
+
+    desc "version", "bundled_gems version"
+    def version
+      puts ::BundledGem::VERSION
+    end
   end
 end
