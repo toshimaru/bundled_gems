@@ -8,13 +8,23 @@ module BundledGem
     LOCKFILE = "Gemfile.lock"
 
     def initialize(lockfile: LOCKFILE)
-      @lockfile = lockfile
+      @lockfile_content = File.read(lockfile)
     end
 
+    # Parse `Gemfile.lock` and Retrieve specs
     def lockfile_specs
-      lockfile_content = File.read(@lockfile)
-      lockfile = ::Bundler::LockfileParser.new(lockfile_content)
       lockfile.specs
+    end
+
+    # Check gem is listed in `Gemfile.lock`
+    def gem_listed?(gem)
+      lockfile_specs.map(:name).include? gem
+    end
+
+    private
+
+    def lockfile
+      @lockfile ||= ::Bundler::LockfileParser.new(@lockfile_content)
     end
   end
 end
