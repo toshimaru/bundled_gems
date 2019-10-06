@@ -11,7 +11,10 @@ module BundledGem
 
     desc "list", "bundle list without `bundle install`"
     def list
-      LockfileReader.new.lockfile_specs.each { |s| puts "#{s.name}, #{s.version}" }
+      puts "Gems included in `Gemfile.lock`:"
+      LockfileReader.new.lockfile_specs.each do |s| 
+        puts "  * #{s.name}, #{s.version}" 
+      end
     end
   end
 end
