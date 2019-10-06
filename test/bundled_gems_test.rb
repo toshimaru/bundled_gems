@@ -20,4 +20,8 @@ class BundledGemTest < Minitest::Test
   def test_get_version_nil
     assert_nil @reader.get_version('not_listed_gem')
   end
+
+  # TODO
+  # def test_no_such_file
+  # end
 end
