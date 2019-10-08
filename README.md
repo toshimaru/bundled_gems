@@ -1,28 +1,22 @@
 # BundledGems
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bundled_gems`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Actions Status](https://github.com/toshimaru/bundled_gems/workflows/Ruby%20Test/badge.svg)](https://github.com/toshimaru/bundled_gems/actions)
 
-TODO: Delete this and the text above, and describe your gem
+Install gem specified in `Gemfile.lock` without `bundle install`.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'bundled_gems'
+```console
+$ gem install bundled_gems
 ```
 
-And then execute:
-
-    $ gem install bundled_gems
-
-Or install it yourself as:
-
-    $ bgem install gem_name
+Then, you can use `bgem` command.
 
 ## Usage
 
-TODO: Write usage instructions here
+```console
+$ bgem install gem_name
+```
 
 ## Development
 
