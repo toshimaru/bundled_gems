@@ -13,5 +13,11 @@ module BundledGem
       assert_empty err
       assert out.include?("Gems included in `Gemfile.lock`:")
     end
+
+    def test_unknown_command
+      out, err = capture_io { BundledGem::Cli.start(['unknown']) }
+      assert_empty out
+      assert err.include?('Could not find command "unknown"')
+    end
   end
 end
