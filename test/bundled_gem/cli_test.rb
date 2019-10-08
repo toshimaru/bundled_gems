@@ -5,11 +5,17 @@ require 'bundled_gem/cli'
 
 module BundledGem
   class CliTest < Minitest::Test
-    def test_intall
+    def test_intall_with_no_arg
       out, err = capture_io { BundledGem::Cli.start(['install']) }
       assert_empty out
       assert_match(/was called with no arguments/, err)
       assert_match(/install \[BUNDLED_GEM\]/, err)
+    end
+
+    def test_intall_with_arg
+      out, err = capture_io { BundledGem::Cli.start(['install', 'rake']) }
+      assert_empty out
+      assert_empty err
     end
 
     def test_list
