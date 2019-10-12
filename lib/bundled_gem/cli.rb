@@ -8,6 +8,8 @@ module BundledGem
     desc "install [BUNDLED_GEM]", "install [BUNDLED_GEM] from `Gemfile.lock`"
     option "lockfile", type: :string, default: LOCKFILE, desc: "Use the specified gemfile.lock instead of Gemfile.lock"
     def install(*bundled_gems)
+      abort "Please specify at least one gem name (e.g. gem build GEMNAME)" if bundled_gems.empty?
+
       reader = LockfileReader.new(lockfile: options[:lockfile])
       bundled_gems.each do |bundled_gem|
         if reader.gem_listed?(bundled_gem)
