@@ -16,9 +16,16 @@ module BundledGem
       assert_match(/Please specify at least one gem name \(e\.g\. gem build GEMNAME\)/, err)
     end
 
-    def test_intall_with_arg
+    def test_intall_single_gem
       out, err = capture_io { BundledGem::Cli.start(['install', 'rake']) }
       assert_match(/Successfully installed rake/, out)
+      assert_empty err
+    end
+
+    def test_intall_multiple_gems
+      out, err = capture_io { BundledGem::Cli.start(['install', 'rake', 'minitest']) }
+      assert_match(/Successfully installed rake/, out)
+      assert_match(/Successfully installed minitest/, out)
       assert_empty err
     end
 
@@ -30,7 +37,7 @@ module BundledGem
       assert_match(/`c` is not listed in Gemfile.lock./, err)
     end
 
-    def test_intall_invalid_gems
+    def test_intall_valid_and_invalid_gems
       out, err = capture_io { BundledGem::Cli.start(['install', 'a', 'rake', 'b']) }
       assert_match(/Successfully installed rake/, out)
       assert_match(/`a` is not listed in Gemfile.lock./, err)
