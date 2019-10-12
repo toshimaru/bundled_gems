@@ -22,6 +22,14 @@ module BundledGem
       assert_empty err
     end
 
+    def test_intall_invalid_gems
+      out, err = capture_io { BundledGem::Cli.start(['install', 'a', 'b', 'c']) }
+      assert_empty out
+      assert_match(/`a` is not listed in Gemfile.lock./, err)
+      assert_match(/`b` is not listed in Gemfile.lock./, err)
+      assert_match(/`c` is not listed in Gemfile.lock./, err)
+    end
+
     def test_list
       out, err = capture_io { BundledGem::Cli.start(['list']) }
       assert_empty err
