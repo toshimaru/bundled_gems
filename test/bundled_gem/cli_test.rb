@@ -18,7 +18,7 @@ module BundledGem
 
     def test_intall_with_arg
       out, err = capture_io { BundledGem::Cli.start(['install', 'rake']) }
-      assert_empty out
+      assert_match(/Successfully installed rake/, out)
       assert_empty err
     end
 
@@ -28,6 +28,13 @@ module BundledGem
       assert_match(/`a` is not listed in Gemfile.lock./, err)
       assert_match(/`b` is not listed in Gemfile.lock./, err)
       assert_match(/`c` is not listed in Gemfile.lock./, err)
+    end
+
+    def test_intall_invalid_gems
+      out, err = capture_io { BundledGem::Cli.start(['install', 'a', 'rake', 'b']) }
+      assert_match(/Successfully installed rake/, out)
+      assert_match(/`a` is not listed in Gemfile.lock./, err)
+      assert_match(/`b` is not listed in Gemfile.lock./, err)
     end
 
     def test_list
