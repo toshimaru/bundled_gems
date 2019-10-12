@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'open3'
 require 'thor'
 
 module BundledGem
@@ -14,7 +15,12 @@ module BundledGem
       bundled_gems.each do |bundled_gem|
         if reader.gem_listed?(bundled_gem)
           version = reader.get_version(bundled_gem)
-          system "gem install #{bundled_gem} --version #{version}"
+          command = "gem install #{bundled_gem} --version #{version}"
+          IO.popen(command) do |f|
+            while line = f.gets
+              puts line
+            end
+          end
         else
           warn "`#{bundled_gem}` is not listed in Gemfile.lock." 
         end
