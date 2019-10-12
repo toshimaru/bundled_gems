@@ -6,10 +6,12 @@ require 'bundled_gem/cli'
 module BundledGem
   class CliTest < Minitest::Test
     def test_intall_with_no_arg
-      out, err = capture_io { BundledGem::Cli.start(['install']) }
+      out, err = capture_io do 
+        BundledGem::Cli.start(['install']) 
+      rescue SystemExit
+      end
       assert_empty out
-      assert_match(/was called with no arguments/, err)
-      assert_match(/install \[BUNDLED_GEM\]/, err)
+      assert_match(/Please specify at least one gem name \(e\.g\. gem build GEMNAME\)/, err)
     end
 
     def test_intall_with_arg
