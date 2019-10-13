@@ -29,9 +29,9 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "bundler"
   spec.add_dependency "thor"
-  
-  spec.add_development_dependency "minitest"
+
   spec.add_development_dependency "minitest-reporters"
+  spec.add_development_dependency "minitest"
   spec.add_development_dependency "rake"
-  # spec.add_development_dependency "rubocop-rails_config"
+  spec.add_development_dependency "rubocop-rails_config"
 end
