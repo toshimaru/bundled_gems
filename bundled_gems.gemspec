@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["me@toshimaru.net"]
 
   spec.summary       = "Install gem from Gemfile.lock without `bundle install`"
-  spec.description   = "Install gem from Gemfile.lock without `bundle install`".
+  spec.description   = "Install gem from Gemfile.lock without `bundle install`"
 
   spec.homepage      = "https://github.com/toshimaru/bundled_gems"
   spec.license       = "MIT"
