@@ -12,11 +12,11 @@ class BundledGemTest < Minitest::Test
   end
 
   def test_gem_listed_false
-    assert_not @reader.gem_listed?("not_listed_gem")
+    refute @reader.gem_listed?("not_listed_gem")
   end
 
   def test_get_version_not_nil
-    assert_not_nil @reader.get_version("rake")
+    refute_nil @reader.get_version("rake")
   end
 
   def test_get_version_nil
