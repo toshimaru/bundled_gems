@@ -1,5 +1,6 @@
 # BundledGems
 
+[![Gem Version](https://badge.fury.io/rb/bundled_gems.svg)](https://badge.fury.io/rb/bundled_gems)
 [![Actions Status](https://github.com/toshimaru/bundled_gems/workflows/Ruby%20Test/badge.svg)](https://github.com/toshimaru/bundled_gems/actions)
 
 Install gem specified in `Gemfile.lock` without `bundle install`.
