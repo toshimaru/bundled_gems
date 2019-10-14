@@ -14,8 +14,29 @@ Then, you can use `bgem` command.
 
 ## Usage
 
+### List gems
+
+```console
+$ bgem list
+Gems included in `Gemfile.lock`:
+  * actionpack, 5.2.3
+  * actionview, 5.2.3
+  * activesupport, 5.2.3
+  ...(snip)...
+```
+
+### Install gem
+
 ```console
 $ bgem install gem_name
+```
+
+## Example
+
+```console
+$ gem install bundled_gems  # Install bundled_gems and `bgem` command is available
+$ bgem install rubocop      # install rubocop specified in `Gemfile.lock`
+$ rubocop                   # Run rubocop
 ```
 
 ## Development
