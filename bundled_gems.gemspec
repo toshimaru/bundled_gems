@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "bundled_gem/version"
@@ -8,8 +10,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["toshimaru"]
   spec.email         = ["me@toshimaru.net"]
 
-  spec.summary       = %q{BundledGems}
-  spec.description   = %q{BundledGems}
+  spec.summary       = "Install gem from Gemfile.lock without `bundle install`"
+  spec.description   = "Install gem from Gemfile.lock without `bundle install`".
+
   spec.homepage      = "https://github.com/toshimaru/bundled_gems"
   spec.license       = "MIT"
 
@@ -19,7 +22,7 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
+  spec.files         = Dir.chdir(File.expand_path("..", __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
   spec.bindir        = "exe"
