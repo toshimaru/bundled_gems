@@ -18,7 +18,7 @@ Then, you can use `bgem` command.
 $ bgem                    
 Commands:
   bgem help [COMMAND]         # Describe available commands or one specific command
-  bgem install [BUNDLED_GEM]  # install [BUNDLED_GEM] from `Gemfile.lock`
+  bgem install [BUNDLED_GEM]  # install [BUNDLED_GEM] specified in `Gemfile.lock`
   bgem list                   # bundle list without `bundle install`
   bgem version                # bundled_gems version
 ```
