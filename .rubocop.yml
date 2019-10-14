@@ -4,3 +4,7 @@ inherit_gem:
 
 AllCops:
   TargetRubyVersion: 2.4
+
+# Prefer assert_not_x over refute_x
+Rails/RefuteMethods:
+  Enabled: false
