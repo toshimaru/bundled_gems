@@ -6,7 +6,7 @@ require "thor"
 module BundledGem
   # bundled_gem CLI class powered by thor
   class Cli < Thor
-    desc "install [BUNDLED_GEM]", "install [BUNDLED_GEM] from `Gemfile.lock`"
+    desc "install [BUNDLED_GEM]", "install [BUNDLED_GEM] specified in `Gemfile.lock`"
     option "lockfile", type: :string, default: LOCKFILE, desc: "Use the specified gemfile.lock instead of Gemfile.lock"
     def install(*bundled_gems)
       abort "Please specify at least one gem name (e.g. gem build GEMNAME)" if bundled_gems.empty?
@@ -26,6 +26,8 @@ module BundledGem
         end
       end
     end
+
+    # TODO: create i command for aliasing install
 
     desc "list", "bundle list without `bundle install`"
     option "lockfile", type: :string, default: LOCKFILE, desc: "Use the specified gemfile.lock instead of Gemfile.lock"
