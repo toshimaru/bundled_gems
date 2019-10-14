@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'bundler'
+require "bundler"
 require "bundled_gem/version"
 
 module BundledGem
@@ -20,7 +20,7 @@ module BundledGem
 
     # Get version info from `Gemfile.lock`
     def get_version(gem)
-      lockfile_specs.find{ |s| s.name == gem }&.version
+      lockfile_specs.find { |s| s.name == gem }&.version
     end
 
     # Check gem is listed in `Gemfile.lock`
@@ -29,9 +29,8 @@ module BundledGem
     end
 
     private
-
-    def lockfile
-      @lockfile ||= ::Bundler::LockfileParser.new(@lockfile_content)
-    end
+      def lockfile
+        @lockfile ||= ::Bundler::LockfileParser.new(@lockfile_content)
+      end
   end
 end
