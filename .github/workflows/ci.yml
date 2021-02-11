@@ -1,23 +1,21 @@
 name: Ruby Test
-on: [push]
+on: [push, pull_request]
 jobs:
   build:
     strategy:
       matrix:
-        ruby: [2.4, 2.5, 2.6, 2.7]
+        ruby: [2.5, 2.6, 2.7, 3.0]
         os: [ubuntu-latest, macos-latest]
-
     runs-on: ${{ matrix.os }}
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby ${{ matrix.ruby }}
-      uses: eregon/use-ruby-action@master
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
     - name: Install gems
       run: |
-        gem install bundler --force --no-document
+        gem install bundler --no-document
         bundle install --jobs 4 --retry 3
     - run: bundle exec rake
     - run: bundle exec rubocop
