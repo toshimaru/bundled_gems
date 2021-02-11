@@ -15,7 +15,7 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
     - name: Install gems
       run: |
-        gem install bundler --force --no-document
+        gem install bundler --no-document
         bundle install --jobs 4 --retry 3
     - run: bundle exec rake
     - run: bundle exec rubocop
