@@ -15,7 +15,7 @@ module BundledGem
       bundled_gems.each do |bundled_gem|
         if reader.gem_listed?(bundled_gem)
           version = reader.get_version(bundled_gem)
-          command = "gem install #{bundled_gem} --version #{version}"
+          command = "gem install #{bundled_gem}:#{version}"
           IO.popen(command) do |f|
             while line = f.gets
               puts line
