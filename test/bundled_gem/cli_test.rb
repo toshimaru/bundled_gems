@@ -7,10 +7,8 @@ module BundledGem
   class CliTest < Minitest::Test
     def test_intall_with_no_arg
       out, err = capture_io do
-        begin
-          BundledGem::Cli.start(["install"])
-        rescue SystemExit
-        end
+        BundledGem::Cli.start(["install"])
+      rescue SystemExit
       end
       assert_empty out
       assert_match(/Please specify at least one gem name \(e\.g\. gem build GEMNAME\)/, err)

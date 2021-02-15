@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/bundled_gems.svg)](https://badge.fury.io/rb/bundled_gems)
 [![Actions Status](https://github.com/toshimaru/bundled_gems/workflows/Ruby%20Test/badge.svg)](https://github.com/toshimaru/bundled_gems/actions)
 
-Install gem specified in `Gemfile.lock` without `bundle install`.
+Install a gem specified in `Gemfile.lock` without running `bundle install`.
 
 ## Installation
 
@@ -11,7 +11,7 @@ Install gem specified in `Gemfile.lock` without `bundle install`.
 $ gem install bundled_gems
 ```
 
-Then, you can use `bgem` command.
+Then, `bgem` command is available.
 
 ## Usage
 
@@ -65,4 +65,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the BundledGem project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/toshimaru/bundled_gems/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the BundledGem project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/toshimaru/bundled_gems/blob/main/CODE_OF_CONDUCT.md).
