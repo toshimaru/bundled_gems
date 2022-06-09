@@ -11,7 +11,7 @@ jobs:
         ruby-version: 2.7
     - name: Install RuboCop and Run
       run: |
-        bundle install
+        bundle install --without development
         ./bin/bgem list --lockfile test/fixture/Gemfile.sample.lock
         ./bin/bgem install rubocop --lockfile test/fixture/Gemfile.sample.lock
         rubocop --version
