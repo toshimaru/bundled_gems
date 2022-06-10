@@ -8,10 +8,13 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7
+        ruby-version: 3.1
     - name: Install RuboCop and Run
       run: |
-        bundle install
+        bundle install --without development
         ./bin/bgem list --lockfile test/fixture/Gemfile.sample.lock
         ./bin/bgem install rubocop --lockfile test/fixture/Gemfile.sample.lock
         rubocop --version
+    - name: Installed rubocop version test
+      run: |
+        [[  $(rubocop --version) == "0.70.0" ]] || exit 1
