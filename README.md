@@ -5,6 +5,12 @@
 
 Install a gem specified in `Gemfile.lock` without running `bundle install`.
 
+## Motivation
+
+After the emergence of Docker, libraries (such as rubygems) are installed inside Docker or Docker Volume, but we sometimes want to install specific version of libraries in Host machine.
+
+Here comes the bundled_gems command (`bgem`). `bgem` reads your `Gemfile.lock` and install the specific version of the gem.
+
 ## Installation
 
 ```console
