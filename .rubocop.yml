@@ -3,7 +3,7 @@ inherit_gem:
     - config/rails.yml
 
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.6
 
 # Prefer assert_not_x over refute_x
 Rails/RefuteMethods:
