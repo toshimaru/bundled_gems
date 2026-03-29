@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "bundled_gem/version"
 require "open3"
 require "thor"
 
