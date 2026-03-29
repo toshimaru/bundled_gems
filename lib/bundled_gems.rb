@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "bundler"
+require_relative "bundled_gem/version"
 
 module BundledGem
   # default bundler lockfile
